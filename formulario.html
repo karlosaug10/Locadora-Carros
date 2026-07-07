@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro Integrado</title>
+    <style>
+        /* CSS INTEGRADO */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .radio-group {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 6px;
+            border: 1px solid #dee2e6;
+        }
+
+        .radio-group label {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            margin-top: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Formulário de Cadastro</h2>
+    <form name="cadastro" onsubmit="return validaForm()">
+        
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" name="nome">
+
+        <label for="user">Usuário:</label>
+        <input type="text" id="user" name="user">
+
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha">
+
+        <label for="email">E-mail:</label>
+        <input type="text" id="email" name="email" placeholder="exemplo@dominio.com">
+
+        <label for="telefone">Telefone (apenas números):</label>
+        <input type="text" id="telefone" name="telefone">
+
+        <label for="nasce">Data de Nascimento:</label>
+        <input type="text" id="nasce" name="nasce" placeholder="DD/MM/AAAA">
+
+        <div class="radio-group">
+            <span style="font-weight:bold; color:#495057;">Sexo:</span><br><br>
+            <input type="radio" name="sexo" value="M"> Masculino
+            <input type="radio" name="sexo" value="F" style="margin-left:15px;"> Feminino
+        </div>
+
+        <button type="submit">Finalizar Cadastro</button>
+    </form>
+</div>
+
+<script>
+    /* JAVASCRIPT INTEGRADO*/
+    function validaForm() {
+        var d = document.cadastro;
+
+        // Validar nome
+        if (d.nome.value == "") {
+            alert("O campo " + d.nome.name + " deve ser preenchido!");
+            d.nome.focus();
+            return false;
+        }
+
+        // Validar user
+        if (d.user.value == "") {
+            alert("O campo " + d.user.name + " deve ser preenchido!");
+            d.user.focus();
+            return false;
+        }
+
+        // Validar senha
+        if (d.senha.value == "") {
+            alert("O campo " + d.senha.name + " deve ser preenchido!");
+            d.senha.focus();
+            return false;
+        }
+
+        // Validar email (vazio)
+        if (d.email.value == "") {
+            alert("O campo " + d.email.name + " deve ser preenchido!");
+            d.email.focus();
+            return false;
+        }
+
+        // Validar email (formato)
+        var parte1 = d.email.value.indexOf("@");
+        var parte2 = d.email.value.indexOf(".");
+        var parte3 = d.email.value.length;
+        if (!(parte1 >= 3 && parte2 >= 6 && parte3 >= 9)) {
+            alert("O campo " + d.email.name + " deve conter um endereço eletrônico válido!");
+            d.email.focus();
+            return false;
+        }
+
+        // Validar telefone (vazio)
+        if (d.telefone.value == "") {
+            alert("O campo " + d.telefone.name + " deve ser preenchido!");
+            d.telefone.focus();
+            return false;
+        }
+
+        // Validar telefone (numérico)
+        if (isNaN(d.telefone.value)) {
+            alert("O campo " + d.telefone.name + " deve conter apenas números!");
+            d.telefone.focus();
+            return false;
+        }
+
+        // Validar data de nascimento
+        var hoje = new Date();                 // Cria um objeto de data com o dia e hora atuais
+        var anoAtual = hoje.getFullYear();     //Extrai o ano atual com 4 dígitos (ex: 2026)
+        var barras = d.nasce.value.split("/"); // Quebra a data "10/05/1990" em ["10", "05", "1990"]
+
+        if (barras.length == 3) { //Verifica se a estrutura básica da data está correta (deve ter 2 barras, gerando 3 partes)
+            var dia = barras[0];
+            var mes = barras[1];
+            var ano = barras[2];
+            var resultado = (!isNaN(dia) && (dia > 0) && (dia < 32)) &&    // Valida o DIA: Não pode ser texto, deve ser maior que 0 e menor que 32
+                            (!isNaN(mes) && (mes > 0) && (mes < 13)) &&    // Valida o MÊS: Não pode ser texto, deve ser entre 1 e 12
+                            (!isNaN(ano) && (ano.length == 4) && (ano <= anoAtual && ano >= 1900)); // Valida o ANO: Não pode ser texto, deve ter 4 dígitos, ser menor ou igual ao ano atual e não anterior a 1900
+            
+            if (!resultado) {
+                alert("Formato de data inválido!");
+                d.nasce.focus();
+                return false;
+            }
+        } else {
+            alert("Formato de data inválido!");
+            d.nasce.focus();
+            return false;
+        }
+
+        // Validar sexo
+        if (!d.sexo[0].checked && !d.sexo[1].checked) {
+            alert("Escolha o sexo!");
+            return false;
+        }
+
+        alert("Cadastro realizado com sucesso!");
+        return true;
+    }
+</script>
+
+</body>
+</html>

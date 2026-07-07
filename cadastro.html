@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro do Condutor - DriveX</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        .radio-group {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            padding: 5px 0 10px 0;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: normal;
+            cursor: pointer;
+        }
+
+        .radio-option input[type="radio"] {
+            margin: 0;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Cadastro do Condutor</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="loja.html">Nossas Lojas</a></li>
+            <li><a href="empresarial.html">Atendimento Empresarial</a></li>
+            <li><a href="dados.html">Veículos e Tarifas</a></li>
+            <li><a href="conteudo.html">Informações Importantes</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <form id="formularioCadastro" onsubmit="return validarFormulario()">
+            
+            <label for="nome">Nome Completo:</label>
+            <input type="text" id="nome" required>
+
+            <label>Sexo:</label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="sexo" value="masculino" checked> Masculino
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="sexo" value="feminino"> Feminino
+                </label>
+                <label class="radio-option">
+                   
+                </label>
+            </div>
+
+            <label for="endereco">Endereço Residencial:</label>
+            <input type="text" id="endereco" placeholder="Rua, Número, Bairro e Cidade" required>
+
+            <label for="whatsapp">Whatsapp:</label>
+            <input type="tel" id="whatsapp" placeholder="(00) 90000-0000" required>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" placeholder="nome@provedor.com" required>
+
+            <label for="dataNascimento">Data de Nascimento:</label>
+            <input type="date" id="dataNascimento" required>
+
+            <label for="categoria">Categoria Pretendida:</label>
+            <select id="categoria">
+                <option value="economico">Económico</option>
+                <option value="intermediario">Intermediário</option>
+                <option value="suv">SUV</option>
+                <option value="luxo">Luxo</option>
+            </select>
+
+            <button type="submit" style="background-color: #008751; box-shadow: 0 4px 6px rgba(0,0,0,0.2);">
+                Concluir e Enviar Cadastro
+            </button>
+        </form>
+    </main>
+
+    <a href="index.html" class="voltar-link">Voltar para Home</a>
+
+    <footer>
+        <p>&copy; 2026 DriveX Locadora de Carros</p>
+    </footer>
+
+</body>
+</html>

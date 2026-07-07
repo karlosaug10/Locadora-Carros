@@ -1,0 +1,152 @@
+/* Cores principais: Azul Anil (#002f6c), Verde Bandeira (#008751), Fundo Branco (#ffffff) */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color: #333333;
+}
+
+header { 
+    background-color: #002f6c; /* Azul Anil */
+    padding: 30px; 
+    text-align: center; 
+    color: white;
+    border-bottom: 5px solid #008751; /* Verde Bandeira */
+}
+
+header h1 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+}
+
+nav ul {
+    list-style: none;
+    background: #222222;
+    padding: 12px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #008751;
+}
+
+main { 
+    display: flex; 
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 40px; 
+    padding: 40px 20px;
+    flex-wrap: wrap; 
+}
+
+.conteudo-texto {
+    flex: 1;
+    min-width: 300px;
+    max-width: 600px;
+}
+
+.foto-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto-container img {
+    max-width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 5px solid #002f6c;
+}
+
+/* Tabelas (dados.html) */
+.tabela-veiculos {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.tabela-veiculos th, .tabela-veiculos td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #dddddd;
+}
+
+/* Formulário (cadastro.html) */
+form { 
+    display: flex; 
+    flex-direction: column; 
+    width: 100%;
+    max-width: 450px; 
+    gap: 12px; 
+}
+
+label {
+    font-weight: bold;
+    color: #002f6c;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button[type="submit"] {
+    padding: 12px; 
+    background: #008751; /* Verde Bandeira */
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 1.1rem;
+    margin-top: 10px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background: #005c36;
+}
+
+footer {
+    background-color: #222222;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 4px solid #002f6c;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+.voltar-link {
+    display: block;
+    text-align: center;
+    margin: 20px auto;
+    text-decoration: none;
+    color: #002f6c;
+    font-weight: bold;
+}
